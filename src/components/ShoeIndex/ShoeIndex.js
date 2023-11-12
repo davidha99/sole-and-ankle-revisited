@@ -14,7 +14,15 @@ const ShoeIndex = ({ sortId, setSortId }) => {
     <Wrapper>
       <MainColumn>
         <Header>
-          <Title>Running</Title>
+          <BreadcrumbsTitleWrapper>
+            <Breadcrumbs>
+              <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
+              <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
+              <Breadcrumbs.Crumb href="/sale/shoes">Shoes</Breadcrumbs.Crumb>
+            </Breadcrumbs>
+            <BreadcrumbsTitle>Running</BreadcrumbsTitle>
+          </BreadcrumbsTitleWrapper>
+          <SimpleTitle>Running</SimpleTitle>
           <Select
             label="Sort"
             value={sortId}
@@ -31,9 +39,7 @@ const ShoeIndex = ({ sortId, setSortId }) => {
         <Breadcrumbs>
           <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
           <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
-          <Breadcrumbs.Crumb href="/sale/shoes">
-            Shoes
-          </Breadcrumbs.Crumb>
+          <Breadcrumbs.Crumb href="/sale/shoes">Shoes</Breadcrumbs.Crumb>
         </Breadcrumbs>
         <Spacer size={42} />
         <ShoeSidebar />
@@ -51,6 +57,10 @@ const Wrapper = styled.div`
 
 const LeftColumn = styled.div`
   flex-basis: 248px;
+
+  @media ${(props) => props.theme.queries.tabletAndSmaller} {
+    display: none;
+  }
 `;
 
 const MainColumn = styled.div`
@@ -66,6 +76,29 @@ const Header = styled.header`
 const Title = styled.h2`
   font-size: 1.5rem;
   font-weight: ${WEIGHTS.medium};
+`;
+
+const BreadcrumbsTitle = styled(Title)`
+  display: none;
+
+  @media ${(props) => props.theme.queries.tabletAndSmaller} {
+    display: revert;
+  }
+`;
+
+const SimpleTitle = styled(Title)`
+  @media ${(props) => props.theme.queries.tabletAndSmaller} {
+    display: none;
+  }
+`;
+
+const BreadcrumbsTitleWrapper = styled.div`
+  display: none;
+
+  @media ${(props) => props.theme.queries.tabletAndSmaller} {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export default ShoeIndex;
