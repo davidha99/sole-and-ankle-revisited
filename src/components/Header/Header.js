@@ -63,6 +63,16 @@ const MainHeader = styled.div`
   padding: 18px 32px;
   height: 72px;
   border-bottom: 1px solid ${COLORS.gray[300]};
+
+  @media ${(props) => props.theme.queries.tabletAndSmaller} {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media ${(props) => props.theme.queries.phoneAndSmaller} {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
 `;
 
 const Nav = styled.nav`
@@ -81,6 +91,10 @@ const MobileNav = styled.nav`
   @media ${(props) => props.theme.queries.tabletAndSmaller} {
     display: flex;
     gap: 32px;
+  }
+
+  @media ${(props) => props.theme.queries.phoneAndSmaller} {
+    gap: 16px;
   }
 `;
 
